@@ -1,3 +1,20 @@
+// invalidation.go — Redis Pub/Sub cross-process cache invalidation (package rediscache, github.com/ubgo/cache-redis).
+//
+// Package role: part of the ubgo/cache-redis adapter; this file is the
+// optional cross-pod coherence layer that a tiered cache wires in to keep
+// per-pod L1 copies fresh. See doc.go for the package overview.
+//
+// This file: defines Invalidation (implements cache.Invalidation),
+// NewInvalidation, Publish (one Pub/Sub message per key, best-effort /
+// at-most-once, no rollback on partial failure) and Subscribe (blocks until
+// ctx is cancelled; always closes the subscription to return the pooled
+// connection). The cache.InvalidateAll sentinel rides the bus as an ordinary
+// key and is interpreted by the subscriber (e.g. tiered Flush).
+//
+// AI-context: Pub/Sub is fire-and-forget — messages published while no
+// subscriber is connected are lost; a missed invalidation only costs one
+// stale L1 read until that L1's TTL elapses, which is an accepted trade-off.
+
 package rediscache
 
 import (

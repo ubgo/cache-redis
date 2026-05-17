@@ -1,3 +1,18 @@
+// doc.go — canonical package documentation (package rediscache, github.com/ubgo/cache-redis).
+//
+// Package role: this file is the authoritative overview for the ubgo/cache
+// Redis adapter; start here before reading rediscache.go (the adapter) or
+// invalidation.go (the Pub/Sub bus).
+//
+// This file: holds ONLY the package doc comment below — no code. It
+// enumerates the design invariants (PEXPIRE not EXPIRE, SCAN not KEYS,
+// prefix-scoped Flush, Close marks-closed-only, errors verbatim except
+// redis.Nil -> cache.ErrNotFound) that the other files implement.
+//
+// AI-context: the // Package … block below is the godoc package doc; do not
+// duplicate it elsewhere (revive flags duplicate package comments). This
+// header is separated from it by a blank line so it stays a file header.
+
 // Package rediscache is the Redis 6+ adapter for github.com/ubgo/cache,
 // backed by github.com/redis/go-redis/v9.
 //

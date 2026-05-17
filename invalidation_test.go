@@ -1,3 +1,5 @@
+// invalidation_test.go — tests for Redis Pub/Sub invalidation (publish/subscribe round-trip, interface conformance).
+
 package rediscache_test
 
 import (

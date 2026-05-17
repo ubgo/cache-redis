@@ -1,3 +1,5 @@
+// rediscache_test.go — tests for the rediscache adapter (conformance suite via miniredis, prefix isolation, TTL/Close edge cases).
+
 package rediscache_test
 
 import (

@@ -1,3 +1,22 @@
+// rediscache.go — the Redis-backed cache.Cache adapter (package rediscache, github.com/ubgo/cache-redis).
+//
+// Package role: rediscache is the Redis 6+ adapter in the ubgo/cache family;
+// it makes a go-redis client satisfy the cache.Cache contract so callers stay
+// backend-agnostic. See doc.go for the package overview and invariants.
+//
+// This file: defines Cache (the adapter), Option/WithPrefix, New, the key
+// namespacing helper k, mapErr (redis.Nil -> cache.ErrNotFound), and every
+// cache.Cache method. Invariants an AI must keep: Expire uses PEXPIRE
+// (millisecond precision, never plain EXPIRE which rounds sub-second TTLs up
+// to 1s); keyspace walks use cursor-based SCAN (batch 512) — never KEYS;
+// Flush is prefix-scoped when a prefix is set (else FlushDB); the iter cursor
+// silently skips a key that expires between SCAN and GET (a correct race);
+// Close only marks the adapter closed, never closing the shared client.
+//
+// AI-context: this is an adapter-of-cache.Cache — it owns no concurrency
+// primitive except the atomic `closed` flag; goroutine safety is delegated to
+// go-redis and to Redis's atomic commands.
+
 package rediscache
 
 import (
