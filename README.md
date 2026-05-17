@@ -4,6 +4,8 @@ Redis 6+ cache adapter for Go, implementing the [`github.com/ubgo/cache`](https:
 
 If you searched for "Go Redis cache library", "go-redis cache wrapper", "Redis cache adapter Golang", or "distributed cache invalidation Go" — this is the Redis backend of the `ubgo/cache` family.
 
+> **Documentation:** a full per-feature cookbook with use cases and runnable snippets for every option, method, and the invalidation bus lives in [`docs/README.md`](docs/README.md).
+
 ## Why this adapter
 
 - **Native Redis, no reinvention.** Every operation maps to the right Redis command: `SET EX/PX`, `SET NX`, `INCRBY`/`DECRBY`, `MGET`, pipelined multi-set. No client-side TTL bookkeeping.
