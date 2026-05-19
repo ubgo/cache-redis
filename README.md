@@ -1,6 +1,8 @@
 # ubgo/cache-redis — Redis cache adapter for Go
 
-![coverage](https://img.shields.io/badge/coverage-96%25-brightgreen)
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/ubgo/cache-redis.svg)](https://pkg.go.dev/github.com/ubgo/cache-redis) [![Go Report Card](https://goreportcard.com/badge/github.com/ubgo/cache-redis)](https://goreportcard.com/report/github.com/ubgo/cache-redis) [![test](https://github.com/ubgo/cache-redis/actions/workflows/test.yml/badge.svg)](https://github.com/ubgo/cache-redis/actions/workflows/test.yml) [![lint](https://github.com/ubgo/cache-redis/actions/workflows/lint.yml/badge.svg)](https://github.com/ubgo/cache-redis/actions/workflows/lint.yml) ![coverage](https://img.shields.io/badge/coverage-96%25-brightgreen) [![tag](https://img.shields.io/github/v/tag/ubgo/cache-redis?sort=semver)](https://github.com/ubgo/cache-redis/tags) [![license](https://img.shields.io/badge/license-source--available-blue)](./LICENSE) ![Go](https://img.shields.io/badge/go-1.24-00ADD8?logo=go)
+
 
 Redis 6+ cache adapter for Go, implementing the [`github.com/ubgo/cache`](https://github.com/ubgo/cache) contract on top of [`go-redis/v9`](https://github.com/redis/go-redis). It is a production-ready, drop-in Redis cache backend with native TTL, atomic counters, prefix isolation, `SCAN`-based bulk delete, and a Pub/Sub cross-process invalidation bus for tiered caches.
 
