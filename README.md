@@ -1,5 +1,7 @@
 # ubgo/cache-redis — Redis cache adapter for Go
 
+![coverage](https://img.shields.io/badge/coverage-96%25-brightgreen)
+
 Redis 6+ cache adapter for Go, implementing the [`github.com/ubgo/cache`](https://github.com/ubgo/cache) contract on top of [`go-redis/v9`](https://github.com/redis/go-redis). It is a production-ready, drop-in Redis cache backend with native TTL, atomic counters, prefix isolation, `SCAN`-based bulk delete, and a Pub/Sub cross-process invalidation bus for tiered caches.
 
 If you searched for "Go Redis cache library", "go-redis cache wrapper", "Redis cache adapter Golang", or "distributed cache invalidation Go" — this is the Redis backend of the `ubgo/cache` family.
